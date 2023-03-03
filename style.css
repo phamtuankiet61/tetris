@@ -1,0 +1,28 @@
+* {
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.play-btn {
+    font-size: 18px;
+    padding: 8px 0;
+    border-radius: 5px;
+}
