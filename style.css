@@ -1,28 +1,35 @@
 * {
-    border: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
-    height: 100vh;
     font-family: 'Press Start 2P', cursive;
 }
 
 .container {
     display: flex;
-    align-items: center;
     justify-content: center;
+    margin-top: 30px;
+}
+
+#board {
+    border: 2px solid #666;
 }
 
 .side-bar {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-left: 16px;
 }
 
-.play-btn {
+#score {
+    margin-top: 20px;
+}
+
+#play-btn {
     font-size: 18px;
-    padding: 8px 0;
+    font-weight: 600;
+    padding: 16px 0;
     border-radius: 5px;
+    background-color: greenyellow;
+    cursor: pointer;
 }
