@@ -26,9 +26,7 @@ var board;
 var brick;
 
 const canvas = document.getElementById("board");
-const nextTeris = document.getElementById("next-teris");
 const ctx = canvas.getContext("2d");
-const nctx = nextTeris.getContext("2d");
 const scoreElement = document.getElementById("score");
 const playElement = document.getElementById("play-btn");
 
@@ -112,12 +110,6 @@ class Board {
     ctx.fillText("Game Over!", 20, canvas.height / 2);
   }
 }
-
-let drawNextShape = () => {
-  nctx.fillStyle = "white";
-  nctx.fillRect(0, 0, nextTeris.width, nextTeris.height);
-};
-drawNextShape();
 
 class Brick {
   constructor(id) {
