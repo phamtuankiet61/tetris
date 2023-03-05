@@ -242,22 +242,24 @@ function generateNewBrick() {
 }
 
 board = new Board(ctx);
-board.drawBoard();
+board.drawBoard()
 
-playElement.addEventListener("click", () => {
-	board.reset();
-	board.isPlaying = true;
+playElement.addEventListener('click', () => {
+    board.reset();
+    board.score = 0;
+    board.handleScore(board.score);
+    board.isPlaying = true;
 
-	brick = generateNewBrick();
-	brick.draw();
+    brick = generateNewBrick();
+    brick.draw();
 
-	const refesh = setInterval(() => {
-		if (!board.gameOver) {
-			brick.moveDown();
-		} else {
-			clearInterval(refesh);
-		}
-	}, 500);
+    const refesh = setInterval(() => {
+        if (!board.gameOver) {
+            brick.moveDown();
+        } else {
+            clearInterval(refesh);
+        }
+    }, 500);
 });
 
 document.addEventListener("keydown", (e) => {
