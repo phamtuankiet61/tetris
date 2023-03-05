@@ -42,6 +42,7 @@ class Board {
         this.isPlaying = false;
 
         this.clearAudio = new Audio('../Audio/sounds_clear.wav');
+        this.audioGame = new Audio('../Audio/waterfall-140894.mp3')
     }
 
     reset() {
@@ -92,6 +93,7 @@ class Board {
     handleGameover() {
         this.gameOver = true;
         this.isPlaying = false;
+        this.audioGame.pause();
         alert('GAME OVER!!');
     }
 
@@ -211,6 +213,7 @@ playElement.addEventListener('click', () => {
     board.score = 0;
     board.handleScore(board.score);
     board.isPlaying = true;
+    board.audioGame.play();
 
     brick = generateNewBrick();
     brick.draw();
@@ -253,6 +256,11 @@ const modalSettings = document.querySelector('.modal_settings');
 const settingsPanel = document.querySelector('.settings_panel');
 const titleBarClose = document.querySelector('.title_bar--close');
 const btnCancel = document.querySelector('.btn_cancel');
+const btnOk = document.querySelector('.btn_ok');
+const lightBtn = document.querySelector('.light-btn');
+const darkBtn = document.querySelector('.dark-btn');
+const btnVolumeOn = document.querySelector('.volume_on');
+const btnVolumeOff = document.querySelector('.volume_off');
 
 settingElement.onclick =  (e) => {
     modalSettings.style.display = 'block';
@@ -269,3 +277,28 @@ btnCancel.onclick = () => {
     modalSettings.style.display = 'none';
 }
 
+btnOk.onclick = () => {
+    modalSettings.style.display = 'none';
+}
+
+darkBtn.onclick = () => {
+    document.body.style.backgroundImage = 'linear-gradient(0deg,#0E8388, #635985)';
+    document.body.style.color = '#E3DFFD';
+}
+
+lightBtn.onclick = () => {
+    document.body.style.backgroundImage = 'linear-gradient(45deg,#CDFCF6, #E3DFFD)';
+    document.body.style.color = '#443C68';
+}
+
+btnVolumeOn.onclick = () => {
+    btnVolumeOn.style.display = 'none';
+    btnVolumeOff.style.display = 'block';
+    board.audioGame.pause();
+}
+
+btnVolumeOff.onclick = () => {
+    btnVolumeOff.style.display = 'none';
+    btnVolumeOn.style.display = 'block';
+    board.audioGame.play();
+}

@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Shantell+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
 
 * {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     
 }
 
 body {
+    height: 100vh;
+    position: relative;
     font-family: 'Press Start 2P', cursive;
+    background-image: linear-gradient(45deg,#CDFCF6, #E3DFFD);
 }
 /* -------- */
 
@@ -25,9 +29,12 @@ body {
 
 /* -------- */
 .container {
+    position: absolute;
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #board {
@@ -42,7 +49,7 @@ body {
 }
 
 .title {
-    margin-top: 10px;
+    margin: 12px 0;
 }
 
 #score {
@@ -66,10 +73,16 @@ body {
     padding: 6px 0;
 }
 
+.volume_off {
+    display: none;
+}
+
 .settings,
-.menu {
+.menu,
+.volume {
     font-size: 20px;
     cursor: pointer;
+    user-select: none;
     padding: 0 6px;
 }
 
@@ -96,7 +109,9 @@ body {
     transform: translate(-50%, -50%);
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
-    animation: slide .4s linear;
+    animation: slide .4s linear;    
+    box-shadow: -10px 10px 23px -3px #666666;
+    z-index: 2;
 }
 
 .title_bar {
@@ -104,6 +119,10 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+}
+
+.title_bar--settings {
+    margin: 15px 0;
 }
 
 .title_bar--close {
@@ -125,10 +144,7 @@ body {
 }
 
 .dark_theme {
-}
-
-.slide_btn {
-
+    padding: 0 0 10px 0;
 }
 
 .light-btn {
@@ -148,6 +164,27 @@ body {
 .dark-btn:hover {
     color: #ECF2FF;
     background-image: linear-gradient(45deg, #443C68, #635985);
+}
+
+.level {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.level__title {
+    margin-right: 84px;
+}
+
+.form_group + .form_group {
+    margin-left: 10px;
+}
+
+.volume_settings {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
 }
 
 .footer_part {

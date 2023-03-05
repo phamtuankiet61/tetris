@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./img/images.png" type="image/x-icon">
-    <title>TERIS</title>
+    <title>TETRIS</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +19,12 @@
         <div class="side-bar">
             <div>
                 <div class="navbar">
+                    <span class="volume volume_on"><span class="material-symbols-outlined">volume_up</span></span>
+                    <span class="volume volume_off"><span class="material-symbols-outlined">volume_off</span></span>
                     <span class="menu"><i class="fa-solid fa-bars"></i></span>
                     <span class="settings"><i class="fa-solid fa-gear"></i></span>
                 </div>
-                <h1 class="title">TERIS</h1>
+                <h1 class="title">TETRIS</h1>
                 <p>Score: <span id="score">0</span></p>
             </div>
             <button id="play-btn">Play</button>
@@ -40,6 +43,25 @@
                     <span class="dark_theme__title">Dark theme</span>
                     <button class="btn light-btn">Light</button>
                     <button class="btn dark-btn">Dark</button>
+                </div>
+                <div class="level">
+                    <span class="level__title">Độ khó</span>
+                    <div class="form_group">
+                        <label for="easy">Dễ</label>
+                        <input type="radio" id="easy" name="level">
+                    </div>
+                    <div class="form_group">
+                        <label for="normal">Vừa</label>
+                        <input type="radio" id="normal" name="level">
+                    </div>
+                    <div class="form_group">
+                        <label for="hard">Khó</label>
+                        <input type="radio" id="hard" name="level">
+                    </div>
+                </div>
+                <div class="volume_settings">
+                    <span class="volume_title">Volume</span>
+                    <input type="range">
                 </div>
             </div>
             <div class="footer_part">
