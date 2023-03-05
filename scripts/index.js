@@ -41,7 +41,7 @@ class Board {
         this.gameOver = false;
         this.isPlaying = false;
 
-        this.clearAudio = new Audio('../sounds/clear.wav');
+        this.clearAudio = new Audio('../Audio/sounds_clear.wav');
     }
 
     reset() {
@@ -208,6 +208,8 @@ board.drawBoard()
 
 playElement.addEventListener('click', () => {
     board.reset();
+    board.score = 0;
+    board.handleScore(board.score);
     board.isPlaying = true;
 
     brick = generateNewBrick();
