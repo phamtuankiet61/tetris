@@ -1,35 +1,36 @@
 * {
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Press Start 2P', cursive;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Press Start 2P", cursive;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
 #board {
-    border: 2px solid #666;
+  border: 2px solid #666;
 }
 
 .side-bar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 16px;
 }
 
 #score {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 #play-btn {
-    font-size: 18px;
-    font-weight: 600;
-    padding: 16px 0;
-    border-radius: 5px;
-    background-color: greenyellow;
-    cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px 0;
+  border-radius: 5px;
+  background-color: greenyellow;
+  cursor: pointer;
+  border: 2px solid black;
 }
