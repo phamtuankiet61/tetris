@@ -1,9 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Shantell+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
 * {
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Press Start 2P', cursive;
+    
 }
 
+body {
+    font-family: 'Press Start 2P', cursive;
+}
+/* -------- */
+
+.btn {
+    padding: 5px 16px;
+    border-radius: 4px;
+    border: none;
+    user-select: none;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #E3DFFD;
+    background-image: linear-gradient(45deg, #BFACE2, #FFCEFE);
+}
+
+/* -------- */
 .container {
     display: flex;
     justify-content: center;
@@ -21,6 +41,10 @@
     margin-left: 16px;
 }
 
+.title {
+    margin-top: 10px;
+}
+
 #score {
     margin-top: 20px;
 }
@@ -32,4 +56,113 @@
     border-radius: 5px;
     background-color: greenyellow;
     cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 6px 0;
+}
+
+.settings,
+.menu {
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 6px;
+}
+
+
+/* Modal settings */
+.modal_settings {
+    position: fixed;
+    font-family: 'Shantell Sans', cursive;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #6666668f;
+    display: none;
+}
+
+.settings_panel {
+    position: absolute;
+    width: 350px;
+    height: 400px;
+    background-color: #635985;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    animation: slide .4s linear;
+}
+
+.title_bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.title_bar--close {
+    position: absolute;
+    padding: 0 4px;
+    top: 4px;
+    right: 13px;
+    font-size: 24px;
+}
+
+.title_bar--close:hover {
+    color: #E3DFFD;
+    cursor: pointer;
+}
+
+.body_part {
+    padding: 0 16px;
+    font-size: 18px;
+}
+
+.dark_theme {
+}
+
+.slide_btn {
+
+}
+
+.light-btn {
+    margin-left: 70px;
+    transition: 0.2s;
+}
+
+.dark-btn {
+    transition: 0.1s;
+}
+
+.light-btn:hover {
+    color: #4E31AA;
+    background-image: linear-gradient(45deg, #E5D1FA, #ECF2FF);
+}
+
+.dark-btn:hover {
+    color: #ECF2FF;
+    background-image: linear-gradient(45deg, #443C68, #635985);
+}
+
+.footer_part {
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+}
+
+@keyframes slide {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 100%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
 }
