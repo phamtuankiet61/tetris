@@ -2,6 +2,8 @@ import BRICK_LAYOUT from "./brick_layout.js";
 
 const COLS = 10;
 const ROWS = 20;
+const COLS_NEXT_BRICK_LAYOUT = 4;
+const ROWS_NEXT_BRICK_LAYOUT = 4;
 const BLOCK_SIDES = 30;
 const COLOR_MAPPINGS = [
   "red",
@@ -24,6 +26,9 @@ const KEY_CODES = {
 
 var board;
 var brick;
+var nextBrick;
+
+var nextBrickLayout;
 
 const canvas = document.getElementById("board");
 const ctx = canvas.getContext("2d");
@@ -32,6 +37,70 @@ const playElement = document.getElementById("play-btn");
 
 ctx.canvas.width = COLS * BLOCK_SIDES;
 ctx.canvas.height = ROWS * BLOCK_SIDES;
+
+// ---------
+const canvasNextBrick = document.getElementById('next-brick');
+const context = canvasNextBrick.getContext('2d');
+
+context.canvas.width = COLS_NEXT_BRICK_LAYOUT * BLOCK_SIDES;
+context.canvas.height = ROWS_NEXT_BRICK_LAYOUT * BLOCK_SIDES;
+
+class NextBrick {
+  constructor(context) {
+    this.context = context;
+    this.grid = this.generateWhiteBoard();
+    this.colPos = 0;
+    this.rowPos = 0;
+  }
+
+  generateWhiteBoard() {
+    return Array.from({ length: ROWS_NEXT_BRICK_LAYOUT }, () => Array(COLS_NEXT_BRICK_LAYOUT).fill(WHITE_COLOR_ID));
+  }
+
+  drawCell(x, y, colorId) {
+    this.context.fillStyle =
+      COLOR_MAPPINGS[colorId] || COLOR_MAPPINGS[WHITE_COLOR_ID];
+    this.context.fillRect(
+      x * BLOCK_SIDES,
+      y * BLOCK_SIDES,
+      BLOCK_SIDES,
+      BLOCK_SIDES
+    );
+    this.context.fillStyle = "black";
+    this.context.strokeRect(
+      x * BLOCK_SIDES,
+      y * BLOCK_SIDES,
+      BLOCK_SIDES,
+      BLOCK_SIDES
+    );
+  }
+
+  drawBoard() {
+    for (var row = 0; row < this.grid.length; row++) {
+      for (var col = 0; col < this.grid[0].length; col++) {
+        this.drawCell(col, row, this.grid[row][col]);
+      }
+    }
+  }
+
+  drawBrick(id) {
+    for (var row = 0; row < BRICK_LAYOUT[id][0].length; row++) {
+      for (var col = 0; col < BRICK_LAYOUT[id][0][0].length; col++) {
+        if (BRICK_LAYOUT[id][0][row][col] !== WHITE_COLOR_ID) {
+          this.drawCell(this.colPos + col, this.rowPos + row, id);
+        }
+      }
+    }
+  }
+  clear() {
+    for (var row = 0; row < this.grid.length; row++) {
+      for (var col = 0; col < this.grid[0].length; col++) {
+        this.drawCell(col, row, WHITE_COLOR_ID);
+      }
+    }
+  }
+}
+
 
 class Board {
   constructor(ctx) {
@@ -240,11 +309,27 @@ class Brick {
 }
 
 function generateNewBrick() {
-  return new Brick(Math.floor(Math.random() * 10) % BRICK_LAYOUT.length);
+  var idBrick;
+  if (nextBrickLayout || nextBrickLayout === 0) {
+    idBrick = nextBrickLayout;
+    nextBrickLayout = generateNextBrickId();
+    nextBrick.clear();
+    nextBrick.drawBrick(nextBrickLayout);
+  } else {
+    idBrick = Math.floor(Math.random() * 10) % BRICK_LAYOUT.length;
+  }
+  return new Brick(idBrick);
+}
+
+function generateNextBrickId() {
+  return Math.floor(Math.random() * 10) % BRICK_LAYOUT.length;
 }
 
 board = new Board(ctx);
 board.drawBoard();
+
+nextBrick = new NextBrick(context);
+nextBrick.drawBoard();
 
 playElement.addEventListener("click", () => {
   board.reset();
@@ -255,6 +340,9 @@ playElement.addEventListener("click", () => {
 
   brick = generateNewBrick();
   brick.draw();
+
+  nextBrickLayout = generateNextBrickId();
+  nextBrick.drawBrick(nextBrickLayout);
 
   const refesh = setInterval(() => {
     if (!board.gameOver) {
